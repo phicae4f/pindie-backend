@@ -1,6 +1,7 @@
 const express = require("express")
 const bodyParser = require("body-parser")
 const path = require("path")
+const cors = require("./middlewares/cors")
 
 
 const gamesRouter = require("./routes/games")
@@ -13,7 +14,9 @@ const app = express()
 const PORT = process.env.PORT || 3000
 connectToDatabase()
 
-app.use(bodyParser.json(),
+app.use(
+    cors,
+    bodyParser.json(),
     express.static(path.join(__dirname, "public")),
     gamesRouter,
     categoriesRouter,
