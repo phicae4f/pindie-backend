@@ -28,4 +28,29 @@ const createCategory = async(req, res, next) => {
     }
 }
 
-module.exports = {findAllCategories, findCategoryById, createCategory}
+const findUserById = async(req, res, next) => {
+    console.log("GET /users/:id")
+    try{
+        req.category = await users.findById(req.params.id)
+        next()
+    }
+    catch(err) {
+        res.status(404).send({message: "Users not found"})
+    }
+}
+
+
+
+const updateCategory = async (req, res, next) => {
+    console.log("PUT /categories/:id")
+    try {
+        req.category = await categories.findByIdAndUpdate(req.params.id, req.body)
+        next()
+    }
+    catch(err) {
+        res.status(404).send({message: "Error updating category"})
+    }
+}
+
+
+module.exports = {findAllCategories, findCategoryById, createCategory, updateCategory}

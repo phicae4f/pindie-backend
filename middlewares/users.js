@@ -30,4 +30,15 @@ const createUser = async(req, res, next) => {
 }
 
 
-module.exports = {findAllUsers, findUserById, createUser}
+const updateUser = async (req, res, next) => {
+    console.log("PUT /users/:id")
+    try {
+        req.user = await users.findByIdAndUpdate(req.params.id, req.body)
+        next()
+    }
+    catch(err) {
+        res.status(404).send({message: "Error updating user"})
+    }
+}
+
+module.exports = {findAllUsers, findUserById, createUser, updateUser}
