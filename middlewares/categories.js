@@ -52,5 +52,24 @@ const updateCategory = async (req, res, next) => {
     }
 }
 
+//пусто value
+const checkIfEmptyName = async(req, res, next) => {
+    if(!req.body.name){
+        res.status(404).send("Введите название категории")
+    } else {
+    next()
+    }
+}
 
-module.exports = {findAllCategories, findCategoryById, createCategory, updateCategory}
+const deleteCategory = async (req, res, next) => {
+    console.log("PUT /games/:id")
+    try {
+        req.category = await categories.findByIdAndDelete(req.params.id)
+        next()
+    }
+    catch(err) {
+        res.status(404).send({message: "Error deleting category"})
+    }
+}
+
+module.exports = {findAllCategories, findCategoryById, createCategory, updateCategory, checkIfEmptyName, deleteCategory}

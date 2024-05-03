@@ -48,5 +48,16 @@ const updateGame = async (req, res, next) => {
     }
 }
 
+const deleteGame = async (req, res, next) => {
+    console.log("PUT /games/:id")
+    try {
+        req.game = await games.findByIdAndDelete(req.params.id)
+        next()
+    }
+    catch(err) {
+        res.status(404).send({message: "Error deleting game"})
+    }
+}
 
-module.exports={findAllGames, createGame, findGameById, updateGame}
+
+module.exports={findAllGames, createGame, findGameById, updateGame, deleteGame}
