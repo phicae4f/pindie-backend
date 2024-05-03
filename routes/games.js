@@ -4,4 +4,5 @@ const sendAllGames = require("../controllers/games")
 
 gamesRouter.get("/games", findAllGames, sendAllGames)
 
+
 module.exports = gamesRouter
