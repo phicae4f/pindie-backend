@@ -16,11 +16,14 @@ const {
   sendGameDeleted,
 } = require("../controllers/games");
 
+const {checkAuth} = require("../middlewares/auth")
+
 gamesRouter.get("/games", findAllGames, sendAllGames);
 gamesRouter.post(
   "/games",
   findAllGames,
   checkIfEmptyFields,
+  checkAuth,
   createGame,
   sendGameCreated
 );
@@ -30,9 +33,10 @@ gamesRouter.put(
   checkIfUsersAreSafe,
   checkIfCategoriesAvaliable,
   checkIfEmptyFields,
+  checkAuth,
   updateGame,
   sendGameUpdated
 );
-gamesRouter.delete("/games/:id", deleteGame, sendGameDeleted);
+gamesRouter.delete("/games/:id", checkAuth, deleteGame, sendGameDeleted);
 
 module.exports = gamesRouter;
