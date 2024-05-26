@@ -1,0 +1,37 @@
+[{
+  "_id": {
+    "$oid": "662a6ccd9ba4b660331f7145"
+  },
+  "name": "popular"
+},
+{
+  "_id": {
+    "$oid": "662a6d049ba4b660331f7147"
+  },
+  "name": "new"
+},
+{
+  "_id": {
+    "$oid": "662a6d139ba4b660331f7148"
+  },
+  "name": "TDS"
+},
+{
+  "_id": {
+    "$oid": "662a6d1d9ba4b660331f7149"
+  },
+  "name": "shooterh"
+},
+{
+  "_id": {
+    "$oid": "662a6d279ba4b660331f714a"
+  },
+  "name": "pixel"
+},
+{
+  "_id": {
+    "$oid": "664d0017a3e03096c6a29f68"
+  },
+  "name": "runner",
+  "__v": 0
+}]
