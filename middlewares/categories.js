@@ -83,6 +83,8 @@ const checkIsCategoryExists = async (req, res, next) => {
   }
 };
 
+
+
 module.exports = {
   findAllCategories,
   findCategoryById,

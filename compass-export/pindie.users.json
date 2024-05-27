@@ -15,13 +15,4 @@
   "email": "jav@example.com",
   "password": "$2a$10$g6PgxfOv1p0xVAi1FCckRuolYB5ImwazvVVhNVisaoxDI9NuAE8oi",
   "__v": 0
-},
-{
-  "_id": {
-    "$oid": "664b7c7c7154d67ad623d525"
-  },
-  "username": "student",
-  "email": "email@domen.ru",
-  "password": "$2a$10$ZfrdqbP6YGsL0jUF5UG2QuZkAyxlv1CDCGd1lTZDbovx8ENwlHf4K",
-  "__v": 0
 }]
