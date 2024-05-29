@@ -44,18 +44,6 @@ const updateGame = async (req, res, next) => {
 };
 
 
-
-const checkIfCategoriesAvaliable = async (req, res, next) => {
-  if (!req.body.categories || req.body.categories === 0) {
-    res.setHeader("Content-Type", "application/json");
-    res
-      .status(400)
-      .send(JSON.stringify({ message: "Выбери хотя бы одну категорию" }));
-  } else {
-    next();
-  }
-};
-
 const deleteGame = async (req, res, next) => {
   console.log("PUT /games/:id");
   try {
@@ -142,7 +130,6 @@ module.exports = {
   findGameById,
   updateGame,
   deleteGame,
-  checkIfCategoriesAvaliable,
   checkIfUsersAreSafe,
   checkIsVoteRequest,
   checkIsGameExists,
