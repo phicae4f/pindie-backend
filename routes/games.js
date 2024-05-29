@@ -2,7 +2,7 @@ const gamesRouter = require("express").Router();
 const {
   findAllGames,
   checkIsGameExists,
-  checkIfCategoriesAvaliable,
+  checkIfCategoriesAvailable,
   findGameById,
   createGame,
   checkIfUsersAreSafe,
@@ -24,7 +24,7 @@ gamesRouter.post(
   "/games",
   findAllGames,
   checkIsGameExists,
-  checkIfCategoriesAvaliable,
+  checkIfCategoriesAvailable,
   checkEmptyFields,
   createGame,
   sendGameCreated
@@ -35,7 +35,7 @@ gamesRouter.put(
   findGameById,
   checkIsVoteRequest,
   checkIfUsersAreSafe,
-  checkIfCategoriesAvaliable,
+  checkIfCategoriesAvailable,
   checkEmptyFields,
   updateGame,
   sendGameUpdated
