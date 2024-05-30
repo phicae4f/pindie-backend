@@ -3,7 +3,7 @@ const {
   findAllCategories,
   createCategory,
   updateCategory,
-  checkIfEmptyName,
+  checkEmptyName,
   deleteCategory,
   checkIsCategoryExists,
 } = require("../middlewares/categories");
@@ -21,13 +21,15 @@ categoriesRouter.post(
   "/categories",
   findAllCategories,
   checkIsCategoryExists,
+  checkEmptyName,
   checkAuth,
   createCategory,
   sendCategoryCreated
 );
 categoriesRouter.put(
   "/categories/:id",
-  checkIfEmptyName,
+  checkEmptyName,
+  checkIsCategoryExists,
   checkAuth,
   updateCategory,
   sendCategoryUpdated
