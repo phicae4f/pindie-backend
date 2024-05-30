@@ -1,5 +1,6 @@
 const categoriesRouter = require("express").Router();
 const {
+  findCategoryById,
   findAllCategories,
   createCategory,
   updateCategory,
