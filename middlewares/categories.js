@@ -46,10 +46,12 @@ const updateCategory = async (req, res, next) => {
   }
 };
 
-//пусто value
-const checkIfEmptyName = async (req, res, next) => {
-  if (!req.body.name) {
-    res.status(404).send("Введите название категории");
+const checkEmptyName = async (req, res, next) => {
+  if (
+    !req.body.name
+     ) { 
+    res.setHeader("Content-Type", "application/json");
+        res.status(400).send(JSON.stringify({ message: "Заполни все поля" }));
   } else {
     next();
   }
@@ -90,7 +92,7 @@ module.exports = {
   findCategoryById,
   createCategory,
   updateCategory,
-  checkIfEmptyName,
+  checkEmptyName,
   deleteCategory,
   checkIsCategoryExists,
 };
