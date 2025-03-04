@@ -7,13 +7,14 @@ const findAllCategories = async (req, res, next) => {
 };
 
 const findCategoryById = async (req, res, next) => {
-  console.log("GET /categories/:id");
-  try {
-    req.category = await categories.findById(req.params.id);
-    next();
-  } catch (err) {
-    res.status(404).send({ message: "Category not found" });
-  }
+    console.log("GET /categories/:id");
+    try {
+        req.category = await categories.findById(req.params.id);
+        next();
+    }
+    catch (err) {
+        res.status(404).send({ message: "Category not found" })
+    }
 };
 
 const createCategory = async (req, res, next) => {
@@ -26,15 +27,6 @@ const createCategory = async (req, res, next) => {
   }
 };
 
-const findUserById = async (req, res, next) => {
-  console.log("GET /users/:id");
-  try {
-    req.category = await users.findById(req.params.id);
-    next();
-  } catch (err) {
-    res.status(404).send({ message: "Users not found" });
-  }
-};
 
 const updateCategory = async (req, res, next) => {
   console.log("PUT /categories/:id");
@@ -46,10 +38,12 @@ const updateCategory = async (req, res, next) => {
   }
 };
 
-//пусто value
-const checkIfEmptyName = async (req, res, next) => {
-  if (!req.body.name) {
-    res.status(404).send("Введите название категории");
+const checkEmptyName = async (req, res, next) => {
+  if (
+    !req.body.name
+     ) { 
+    res.setHeader("Content-Type", "application/json");
+        res.status(400).send(JSON.stringify({ message: "Заполни все поля" }));
   } else {
     next();
   }
@@ -90,7 +84,7 @@ module.exports = {
   findCategoryById,
   createCategory,
   updateCategory,
-  checkIfEmptyName,
+  checkEmptyName,
   deleteCategory,
   checkIsCategoryExists,
 };

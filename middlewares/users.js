@@ -45,6 +45,31 @@ const checkIfEmptyNameAndEmail = async (req, res, next) => {
     next();
   }
 };
+const checkEmptyNameAndEmailAndPassword = async (req, res, next) => {
+  if (!req.body.username || !req.body.email || !req.body.password) {
+    res.setHeader("Content-Type", "application/json");
+    res
+      .status(400)
+      .send(JSON.stringify({ message: "Введите имя, email и пароль" }));
+  } else {
+    next();
+  }
+};
+const checkIsUserExists = async (req, res, next) => {
+  const isInArray = req.usersArray.find((user) => {
+    return req.body.email === user.email;
+  });
+  if (isInArray) {
+    res.setHeader("Content-Type", "application/json");
+    res
+      .status(400)
+      .send(
+        JSON.stringify({ message: "Пользователь с таким email уже существует" })
+      );
+  } else {
+    next();
+  }
+};
 
 const deleteUser = async (req, res, next) => {
   console.log("PUT /games/:id");
@@ -84,5 +109,7 @@ module.exports = {
   checkIfEmptyNameAndEmail,
   deleteUser,
   hashPassword,
-  checkIsVoteRequest
+  checkIsVoteRequest,
+  checkEmptyNameAndEmailAndPassword,
+  checkIsUserExists
 };
